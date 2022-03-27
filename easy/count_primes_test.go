@@ -16,3 +16,8 @@ func TestCountPrimes2(t *testing.T) {
 	n := 5000000
 	t.Log(CountPrimes(n))
 }
+
+func TestCountPrimes3(t *testing.T) {
+	n := 5000000
+	t.Log(CountPrimes2(n))
+}
