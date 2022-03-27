@@ -1,28 +1,29 @@
 package easy
 
-import (
-	"math"
-)
-
 func CountPrimes(n int) int {
 	if n < 2 {
 		return 0
 	}
+	if n == 2 {
+		return 0
+	}
 
-	count := 0
-	for i := 1; i <= n; i++ {
-		if IsPrime(i) {
-			count += 1
+	primes := []int{2}
+	for i := 3; i < n; i += 2 {
+		if IsPrime(i, primes) {
+			primes = append(primes, i)
 		}
 	}
 
-	return count
+	return len(primes)
 }
 
-func IsPrime(n int) bool {
-	var root2 int = int(math.Sqrt(float64(n)))
-	for i := 1; i <= root2; i++ {
-		if n%i == 0 {
+func IsPrime(n int, primes []int) bool {
+	for _, x := range primes {
+		if x*x > n {
+			break
+		}
+		if n%x == 0 {
 			return false
 		}
 	}
