@@ -1,10 +1,7 @@
 package easy
 
 func CountPrimes(n int) int {
-	if n < 2 {
-		return 0
-	}
-	if n == 2 {
+	if n <= 2 {
 		return 0
 	}
 
