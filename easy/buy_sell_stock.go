@@ -24,7 +24,7 @@ func max(x int, y int) int {
 	}
 }
 
-// https://leetcode.com/problems/best-time-to-buy-and-sell-stock
+// https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock/
 func MaxProfitOnePass(prices []int) int {
 	minPrice := prices[0]
 	maxProfit := 0
