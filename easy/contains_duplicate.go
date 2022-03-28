@@ -1,6 +1,6 @@
 package easy
 
-func containsDuplicate(nums []int) bool {
+func ContainsDuplicate(nums []int) bool {
 	len1 := len(nums)
 	dupMap := make(map[int]bool, len1)
 	for i := 0; i < len1; i++ {
