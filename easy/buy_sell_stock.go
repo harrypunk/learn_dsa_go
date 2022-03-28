@@ -1,7 +1,7 @@
 package easy
 
 // https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-ii/
-func MaxProfit(prices []int) int {
+func MaxProfitDp(prices []int) int {
 	days := len(prices)
 	var cash = make([]int, days)
 	var hold = make([]int, days)
@@ -22,6 +22,21 @@ func max(x int, y int) int {
 	} else {
 		return y
 	}
+}
+
+// https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/solution/
+// https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/discuss/555806/GO-Easy-solution
+func MaxProfitPeakValley(prices []int) int {
+	maxProfit := 0
+
+	for i := 1; i < len(prices); i++ {
+		price := prices[i]
+		if price > prices[i-1] {
+			maxProfit += price - prices[i-1]
+		}
+	}
+
+	return maxProfit
 }
 
 // https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock/
