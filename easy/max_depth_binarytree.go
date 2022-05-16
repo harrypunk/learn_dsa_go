@@ -28,8 +28,3 @@ func MaxDepth(root *TreeNode) int {
 	return max
 }
 
-type TreeNode struct {
-	Val   int
-	Left  *TreeNode
-	Right *TreeNode
-}
