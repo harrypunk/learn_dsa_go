@@ -31,5 +31,6 @@ func TestPreorder(t *testing.T) {
 		},
 	}
 
-	Preorder(&root)
+	var result = Preorder(&root)
+	t.Logf("%v", result)
 }

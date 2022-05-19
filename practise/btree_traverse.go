@@ -2,27 +2,24 @@ package practise
 
 import (
 	"dsa_go/easy"
-	"fmt"
 )
 
-func Preorder(root *easy.TreeNode) {
+func Preorder(root *easy.TreeNode) []int {
+	res := []int{}
 	stack := []*easy.TreeNode{}
 	current := root
 
 	for current != nil || len(stack) > 0 {
 		for current != nil {
-			fmt.Printf("%v,", current.Val)
+			res = append(res, current.Val)
 
 			stack = append(stack, current)
 			current = current.Left
 		}
 
 		var last = len(stack)
-		if last > 0 {
-			current = stack[last-1]
-			stack = stack[:last-1]
-			current = current.Right
-		}
+		current = stack[last-1].Right
+		stack = stack[:last-1]
 	}
-  fmt.Println()
+	return res
 }
