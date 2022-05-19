@@ -31,6 +31,11 @@ func TestPreorder(t *testing.T) {
 		},
 	}
 
-	var result = Preorder(&root)
-	t.Logf("%v", result)
+	var result1 = Preorder(&root)
+	var result2 = PreorderRecur(&root)
+	for i := range result1 {
+		if result1[i] != result2[i] {
+			t.Fail()
+		}
+	}
 }

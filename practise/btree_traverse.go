@@ -23,3 +23,16 @@ func Preorder(root *easy.TreeNode) []int {
 	}
 	return res
 }
+
+func PreorderRecur(root *easy.TreeNode) []int {
+	res := []int{}
+	if root == nil {
+		return res
+	}
+
+	res = append(res, root.Val)
+	res = append(res, PreorderRecur(root.Left)...)
+	res = append(res, PreorderRecur(root.Right)...)
+
+	return res
+}
