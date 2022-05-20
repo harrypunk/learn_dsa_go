@@ -1,8 +1,6 @@
 //https://leetcode.cn/problems/longest-substring-without-repeating-characters/
 package medium
 
-import "fmt"
-
 func LengthOfLongestSubstring(s string) int {
 	left := 0
 	maxLen := 0
@@ -34,31 +32,30 @@ func LengthOfLongestSubstringHash(s string) int {
 		return n
 	}
 
-	left := 0
+	/*
+	 * left is the index that last time the same char occured
+	 *  then length = right - left,
+	 * Edge case: index 0, left has to start with -1
+	 */
+	left := -1
 	maxLen := 1
-	// char : last occur index
-	var charMap = map[byte]int{}
+	// char : last occur indices
+	var charMap = map[byte]int{
+		s[0]: 0,
+	}
 
-	for right := 0; right < len(s); right++ {
+	for right := 1; right < len(s); right++ {
 		var rightChar = s[right]
-		var rightCharIndex = 0
-		if _, ok := charMap[rightChar]; ok {
-			rightCharIndex = charMap[rightChar]
+		if lastOccurIndex, ok := charMap[rightChar]; ok {
+			if lastOccurIndex > left {
+				left = lastOccurIndex
+			}
 		}
-		if rightCharIndex > left {
-			left = rightCharIndex
-		}
-		var len1 = right - left + 1
+		var len1 = right - left
 		if len1 > maxLen {
 			maxLen = len1
 		}
-		charMap[rightChar] = right + 1
-
-		for i, v := range charMap {
-			fmt.Printf("%c:%d ", i, v)
-		}
-		fmt.Printf("sub: %v", s[left:right+1])
-		fmt.Println()
+		charMap[rightChar] = right
 
 	}
 
