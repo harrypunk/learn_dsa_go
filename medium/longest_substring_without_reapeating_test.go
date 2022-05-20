@@ -17,3 +17,12 @@ func TestLengthOfLongestSubstring(t *testing.T) {
 		t.Fail()
 	}
 }
+
+func TestLengthOfLongestSubstringHashMap(t *testing.T) {
+	var s1 = "abcabcbb"
+	var len1 = LengthOfLongestSubstringHash(s1)
+	if len1 != 3 {
+		t.Fail()
+	}
+
+}
